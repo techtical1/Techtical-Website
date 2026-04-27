@@ -37,9 +37,9 @@ export function FinalCtaSection() {
             {/* RIGHT */}
             <div className="max-w-[36rem] lg:justify-self-end">
               <p className="text-[1.2rem] leading-[1.5] text-white/70 sm:text-[1.35rem]">
-                A 30-minute intro call. No pitch deck, no pressure. We'll listen to where you're
-                stuck, tell you honestly if we can help, and if we can — we'll propose a 3-day trial
-                so you can see the work before you commit.
+                A 30-minute intro call. No pitch deck, no pressure. We&apos;ll listen to where
+                you&apos;re stuck, tell you honestly if we can help, and if we can — we&apos;ll propose
+                a 3-day trial so you can see the work before you commit.
               </p>
 
               <div className="mt-8">

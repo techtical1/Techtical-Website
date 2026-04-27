@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useTransform, useMotionValue } from "framer-motion";
+import { useTransform, useMotionValue } from "framer-motion";
 import type { MotionValue } from "framer-motion";
 import { CaseStudyCard } from "./case-study-card";
 import type { CaseStudy } from "./case-studies-data";

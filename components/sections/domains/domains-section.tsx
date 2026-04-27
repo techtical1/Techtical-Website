@@ -29,8 +29,8 @@ export function DomainsSection() {
             </p>
 
             <div className="mt-8">
-  <StrategyCallButton children="Explore Our Work" />
-</div>
+              <StrategyCallButton>Explore Our Work</StrategyCallButton>
+            </div>
           </div>
 
           <DomainOrbit />

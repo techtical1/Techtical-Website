@@ -17,7 +17,7 @@ export function FooterSection() {
               </h2>
 
               <p className="mt-5 max-w-[23rem] text-[1rem] leading-7 text-white/70">
-                Have a product idea or something not working? let's figure it out together
+                Have a product idea or something not working? let&apos;s figure it out together
               </p>
 
               <div className="mt-8">

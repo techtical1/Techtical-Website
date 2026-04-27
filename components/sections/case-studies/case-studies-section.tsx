@@ -11,9 +11,6 @@ export function CaseStudiesSection() {
   const totalSlides = caseStudies.length;
   const transitionCount = totalSlides - 1;
 
-  const SCROLL_PER_SLIDE = 520;
-  const scrollDistance = transitionCount * SCROLL_PER_SLIDE;
-
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end end"],

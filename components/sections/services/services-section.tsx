@@ -33,7 +33,7 @@ export function ServicesSection() {
             </h2>
 
             <p className="mt-6 max-w-[34rem] text-[1rem] leading-snug text-[#656566] sm:text-[1.125rem]">
-              Whether you're pre-launch or post-funding, we have a structured
+              Whether you&apos;re pre-launch or post-funding, we have a structured
               engagement for exactly where you are.
             </p>
           </div>
@@ -52,7 +52,7 @@ export function ServicesSection() {
         <div className="mt-8">
             <StrategyCallButton />
             <p className="mt-4 font-hand text-[1.125rem] normal text-[#565656]">
-              Book a free call - we'll tell you in 30 minutes.
+              Book a free call - we&apos;ll tell you in 30 minutes.
             </p>
           </div>
         </div>
