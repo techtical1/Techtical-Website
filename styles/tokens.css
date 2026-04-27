@@ -1,0 +1,12 @@
+/*
+ * tokens.css — optional shim for raw Figma-sourced tokens.
+ *
+ * Prefer adding design tokens directly to app/globals.css inside the
+ * @theme inline block so Tailwind v4 picks them up as utility classes.
+ *
+ * Use this file only when:
+ *   - you need to ship a raw dump of Figma variables without transforming them
+ *   - or you're wiring a token pipeline (Style Dictionary / Tokens Studio)
+ *
+ * Import from globals.css via:   @import "../styles/tokens.css";
+ */

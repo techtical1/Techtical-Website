@@ -1,0 +1,14 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /api
+Disallow: /studio
+
+# Host
+Host: https://techtical.com
+
+# Sitemaps
+Sitemap: https://techtical.com/sitemap.xml
