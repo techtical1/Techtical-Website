@@ -8,7 +8,11 @@ import { ProblemSection } from "@/components/sections/problem/problem-section";
 import { ServicesSection } from "@/components/sections/services/services-section";
 import { DomainsSection } from "@/components/sections/domains/domains-section";
 import { PlansSection } from "@/components/sections/plans/plans-section";
-
+import { CredibilitySection } from "@/components/sections/credibility/credibility-section";
+import { TestimonialsSection } from "@/components/sections/testimonials/testimonials-section";
+import { FinalCtaSection } from "@/components/sections/final-cta/final-cta-section";
+import { StartSmallSection } from "@/components/sections/start-small/start-small-section";
+import { FooterSection } from "@/components/sections/footer/footer-section";
 
 export default function HomePage() {
   return (
@@ -23,14 +27,21 @@ export default function HomePage() {
         <CaseStudiesSection />
         <SectionSeparator />
         <ProblemSection />
-         <SectionSeparator />
+        <SectionSeparator />
         <ServicesSection />
-         <SectionSeparator />
-         <DomainsSection />
-         <SectionSeparator />
-         <PlansSection />
+        <SectionSeparator />
+        <DomainsSection />
+        <SectionSeparator />
+        <PlansSection />
+        <SectionSeparator />
+        <CredibilitySection />
+        <SectionSeparator />
+        <TestimonialsSection />
+        <FinalCtaSection />
+        <SectionSeparator />
+        <StartSmallSection />
+        <FooterSection />
       </main>
     </>
   );
 }
- 
