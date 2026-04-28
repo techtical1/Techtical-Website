@@ -1,4 +1,3 @@
-import { OwnerChatCTA } from "@/components/cta/owner-chat-cta";
 import { FloatingBottomNav } from "@/components/navigation/floating-bottom-nav";
 import { HeroSection } from "@/components/sections/hero/hero-section";
 import { TrustedTeamsSection } from "@/components/sections/trusted-teams/trusted-teams-section";
@@ -13,6 +12,7 @@ import { TestimonialsSection } from "@/components/sections/testimonials/testimon
 import { FinalCtaSection } from "@/components/sections/final-cta/final-cta-section";
 import { StartSmallSection } from "@/components/sections/start-small/start-small-section";
 import { FooterSection } from "@/components/sections/footer/footer-section";
+import { FounderFormWidget } from "@/components/founder-form/founder-form-widget";
 
 export default function HomePage() {
   return (
@@ -20,7 +20,6 @@ export default function HomePage() {
       <main>
         <HeroSection />
         <FloatingBottomNav />
-        <OwnerChatCTA />
         <SectionSeparator className="mb-14" />
         <TrustedTeamsSection />
         <SectionSeparator />
@@ -41,6 +40,7 @@ export default function HomePage() {
         <SectionSeparator />
         <StartSmallSection />
         <FooterSection />
+        <FounderFormWidget />
       </main>
     </>
   );
