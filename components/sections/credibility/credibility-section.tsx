@@ -49,7 +49,7 @@ export function CredibilitySection() {
           </div>
         </div>
 
-        <div className="mt-8 grid w-full grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="mt-8 grid w-full flex-cols-1 gap-8 md:grid-cols-2">
           {credibilityStats.map((stat) => (
             <CredibilityCard
               key={stat.id}
