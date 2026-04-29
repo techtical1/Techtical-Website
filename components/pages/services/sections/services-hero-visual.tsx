@@ -29,13 +29,9 @@ export function ServicesHeroVisual() {
         transition={{ delay: 0.15, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         className="absolute right-[6%] top-[12%] grid gap-3"
       >
-        {servicesHeroData.metrics.slice(0, 2).map((metric) => (
           <ServicesHeroMetrics
-            key={metric.label}
-            value={metric.value}
-            label={metric.label}
           />
-        ))}
+   
       </motion.div>
 
       <motion.div
