@@ -3,8 +3,8 @@
 export const workHeroData = {
   pill: "Our Work",
   title: {
-    line1: "UI/UX case studies that",
-    line2: "boost",
+    line1: "UI/UX case studies",
+    line2: "that boost",
     highlight: "retention & growth",
   },
   description:
@@ -14,10 +14,11 @@ export const workHeroData = {
     note: "Have Something\nSimilar In Mind?",
   },
   year: "2019",
-  visuals: {
-    path: "/assets/work/path.svg",
-    top: "/assets/work/case-1.jpg",
-    main: "/assets/work/case-main.jpg",
-    bottom: "/assets/work/case-3.jpg",
-  },
+visuals: {
+  arrow: "/assets/work/arrow.png",
+  path: "/assets/work/path.png",
+  top: "/assets/work/case-1.png",
+  main: "/assets/work/case-main.png",
+  bottom: "/assets/work/case-3.png",
+},
 };

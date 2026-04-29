@@ -4,9 +4,9 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { SectionPill } from "@/components/ui/section-pill";
 import { Container } from "@/components/ui/container";
 import { workHeroData } from "./work-hero-data";
+import { StrategyCallButton } from "@/components/ui/strategy-call-button";
 
 export function WorkHeroSection() {
   const { pill, title, description, cta, year, visuals } = workHeroData;
@@ -16,12 +16,12 @@ export function WorkHeroSection() {
       <Container>
         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
           <div className="max-w-[560px]">
-            <SectionPill label={pill} className="mb-6" />
 
             <h1 className="text-[42px] font-semibold leading-[1.1] tracking-[-0.04em] text-[#202126] md:text-[56px]">
               {title.line1}
               <br />
               {title.line2}{" "}
+              <br/>
               <span className="font-serif font-normal italic text-[#00895F]">
                 {title.highlight}
               </span>
@@ -31,15 +31,23 @@ export function WorkHeroSection() {
               {description}
             </p>
 
-            <div className="relative mt-10 inline-block">
-              <button className="rounded-full bg-[#00E892] px-8 py-4 text-[15px] font-medium text-[#0F0F0F] shadow-md transition-all hover:scale-[1.02]">
-                {cta.label}
-              </button>
+          <div className="relative mt-10 w-fit">
+            <StrategyCallButton>{cta.label}</StrategyCallButton>
 
-              <span className="absolute left-full top-1/2 ml-6 -translate-y-1/2 whitespace-pre text-[14px] font-medium text-[#00895F]">
+            <div className="absolute left-[270px] top-[74px] h-[120px] w-[220px]">
+              <Image
+                src={visuals.arrow}
+                alt=""
+                width={72}
+                height={58}
+                className="absolute left-0 top-0"
+              />
+
+              <span className="absolute left-[48px] top-[58px] whitespace-pre text-[18px] font-hand leading-[1.45] tracking-[-0.02em] text-[#00895F]">
                 {cta.note}
               </span>
             </div>
+          </div>
           </div>
 
           <div className="relative hidden h-[700px] lg:block">
