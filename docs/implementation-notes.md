@@ -35,7 +35,7 @@ The optional header remains available in `components/nav/navbar.tsx`. The active
 
 ## 5. Homepage sections
 
-The active homepage renders the hero, floating bottom navigation, and owner chat CTA. Hero code is split across `components/sections/hero/` into background, trust row, marquee, data, motion helpers, and the main section composition.
+The active homepage renders the hero, floating bottom navigation, and owner chat CTA. Hero code is split across `components/pages/home/hero/` into background, trust row, marquee, data, motion helpers, and the main section composition.
 
 ## 6. Mobile responsive behavior
 

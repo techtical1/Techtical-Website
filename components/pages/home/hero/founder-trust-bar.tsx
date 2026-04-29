@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-import { founderAvatars } from "@/components/sections/hero/hero-data";
-import { heroFade } from "@/components/sections/hero/hero-motion";
+import { founderAvatars } from "@/components/pages/home/hero/hero-data";
+import { heroFade } from "@/components/pages/home/hero/hero-motion";
 
 export function FounderTrustBar() {
   return (

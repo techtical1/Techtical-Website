@@ -1,1 +1,1 @@
-export { HeroSection } from "@/components/sections/hero/hero-section";
+export { HeroSection } from "@/components/pages/home/hero/hero-section";

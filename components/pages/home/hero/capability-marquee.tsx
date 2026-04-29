@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-import { capabilityMarqueeItems } from "@/components/sections/hero/hero-data";
+import { capabilityMarqueeItems } from "@/components/pages/home/hero/hero-data";
 
 export function CapabilityMarquee() {
   return (

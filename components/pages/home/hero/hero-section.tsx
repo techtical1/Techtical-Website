@@ -4,10 +4,10 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 import { StrategyCallButton } from "@/components/ui/strategy-call-button";
-import { CapabilityMarquee } from "@/components/sections/hero/capability-marquee";
-import { FounderTrustBar } from "@/components/sections/hero/founder-trust-bar";
-import { HeroBackground } from "@/components/sections/hero/hero-background";
-import { heroFade } from "@/components/sections/hero/hero-motion";
+import { CapabilityMarquee } from "@/components/pages/home/hero/capability-marquee";
+import { FounderTrustBar } from "@/components/pages/home/hero/founder-trust-bar";
+import { HeroBackground } from "@/components/pages/home/hero/hero-background";
+import { heroFade } from "@/components/pages/home/hero/hero-motion";
 
 export function HeroSection() {
   return (

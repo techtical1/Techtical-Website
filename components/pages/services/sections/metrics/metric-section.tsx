@@ -1,6 +1,6 @@
 import { MetricCard } from "@/components/ui/metric-card";
 import { servicesMetricsData } from "./metrics-data";
-import { CredibilityCard } from "@/components/sections/credibility/credibility-card";
+import { CredibilityCard } from "@/components/pages/home/credibility/credibility-card";
 
 export function ServicesMetricsSection() {
   return (
