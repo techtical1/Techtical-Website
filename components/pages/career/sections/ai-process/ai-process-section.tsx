@@ -1,0 +1,40 @@
+import { Container } from "@/components/ui/container";
+import { RichHeading } from "@/components/common/rich-heading";
+import { aiProcessData } from "./ai-process-data";
+import { VideoPlayer } from "@/components/ui/video-player/video-player";
+
+export function AiProcessSection() {
+  const { title, subtitle, video } = aiProcessData;
+
+  return (
+    <section className="bg-[#F7F7F2] py-24 md:py-28">
+      <Container size="wide">
+        <div className="mx-auto max-w-[1400px] text-center">
+          <RichHeading
+            as="h2"
+            className="text-[42px] md:text-[58px]"
+            parts={[
+              { text: title.normal },
+              { text: title.highlight, highlight: true },
+            ]}
+          />
+
+          <p className="mt-6 text-[22px] leading-[1.35] tracking-[-0.02em] text-[#666666]">
+            {subtitle}
+          </p>
+
+          <div className="mt-14 overflow-hidden rounded-[32px] bg-[#EDEDEA]">
+           <VideoPlayer
+                src="/assets/founder/founder-video-preview.mp4"
+                poster="/assets/founder/thumbnail.png"
+                autoPlay
+                muted
+                loop
+                className="h-[420px] md:h-[620px]"
+                />
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}

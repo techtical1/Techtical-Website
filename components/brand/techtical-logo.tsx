@@ -7,12 +7,12 @@ type LogoSize = "sm" | "md" | "lg" | "xl";
 
 const logoAssets = {
   light: {
-    mark: "/assets/common/light-icon.svg",
-    logo: "/assets/common/light-logo.svg",
+    mark: "/assets/common/light icon.svg",
+    logo: "/assets/common/light logo.svg",
   },
   dark: {
-    mark: "/assets/common/dark-icon.svg",
-    logo: "/assets/common/dark-logo.svg",
+    mark: "/assets/common/dark icon.svg",
+    logo: "/assets/common/dark logo.svg",
   },
 } as const;
 

@@ -10,7 +10,6 @@ import { ProblemSection } from "@/components/pages/home/problem/problem-section"
 import { StartSmallSection } from "@/components/pages/home/start-small/start-small-section";
 import { TrustedTeamsSection } from "@/components/pages/home/trusted-teams/trusted-teams-section";
 import { SectionSeparator } from "@/components/ui/section-separator";
-import { Section } from "lucide-react";
 
 export default function ServicesPage() {
   return (

@@ -224,3 +224,30 @@
 .animate-trusted-logo-marquee:hover {
   animation-play-state: paused;
 }
+
+/* --- icon card background --- */
+
+.icon-surface {
+  border-radius: 20px;
+  background:
+    linear-gradient(15deg, rgba(164,164,164,0.5) 8.85%, rgba(245,245,245,0) 32.63%),
+    linear-gradient(180deg, #E4E4E4 0%, #F5F5F5 37.9%, #FFF 100%);
+}
+
+/* --- Team Section Animation --- */
+@keyframes team-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.team-scroll {
+  animation: team-scroll 32s linear infinite;
+}
+
+.team-scroll:hover {
+  animation-play-state: paused;
+}
