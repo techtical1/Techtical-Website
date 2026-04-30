@@ -6,7 +6,6 @@ import { BlogHeroSection } from "@/components/pages/blog/sections/hero/blog-hero
 import { LatestInsightsSection } from "@/components/pages/blog/sections/latest-insights/latest-insights-section";
 import { FooterSection } from "@/components/pages/home/footer/footer-section";
 import { SectionSeparator } from "@/components/ui/section-separator";
-import { Section } from "lucide-react";
 
 
 export default function BlogPage() {
