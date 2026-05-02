@@ -14,6 +14,8 @@ import { FinalCtaSection } from "@/components/pages/home/final-cta/final-cta-sec
 import { StartSmallSection } from "@/components/pages/home/start-small/start-small-section";
 import { FooterSection } from "@/components/pages/home/footer/footer-section";
 import { FounderFormWidget } from "@/components/founder-form/founder-form-widget";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 export default async function HomePage() {
   const sanity = await getHomePageData();
@@ -44,6 +46,8 @@ export default async function HomePage() {
         <StartSmallSection data={sanity.startSmall} />
         <FooterSection data={sanity.footer} />
         <FounderFormWidget />
+        <SpeedInsights />
+        <Analytics />
       </main>
     </>
   );
