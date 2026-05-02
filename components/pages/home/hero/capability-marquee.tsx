@@ -1,10 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-
 import { capabilityMarqueeItems } from "@/components/pages/home/hero/hero-data";
 
-export function CapabilityMarquee() {
+type Props = { items?: string[][] };
+
+export function CapabilityMarquee({ items }: Props) {
+  const displayItems = items?.length ? items : [...capabilityMarqueeItems];
+
   return (
     <div className="sticky bottom-20 z-20 w-full border-y border-black/10 bg-[#f1f1f1] py-5">
       <div className="flex overflow-hidden">
@@ -13,7 +16,7 @@ export function CapabilityMarquee() {
           animate={{ x: ["0%", "-50%"] }}
           transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
         >
-          {[...capabilityMarqueeItems, ...capabilityMarqueeItems].map((item, index) => (
+          {[...displayItems, ...displayItems].map((item, index) => (
             <div
               key={`${item.join("-")}-${index}`}
               className="flex items-center gap-4 text-lg font-semibold whitespace-nowrap text-[#2c2c2c] sm:text-xl"

@@ -1,3 +1,4 @@
+import { getHomePageData } from "@/lib/sanity.home";
 import { FloatingBottomNav } from "@/components/navigation/floating-bottom-nav";
 import { HeroSection } from "@/components/pages/home/hero/hero-section";
 import { TrustedTeamsSection } from "@/components/pages/home/trusted-teams/trusted-teams-section";
@@ -14,32 +15,34 @@ import { StartSmallSection } from "@/components/pages/home/start-small/start-sma
 import { FooterSection } from "@/components/pages/home/footer/footer-section";
 import { FounderFormWidget } from "@/components/founder-form/founder-form-widget";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const sanity = await getHomePageData();
+
   return (
     <>
       <main>
-        <HeroSection />
+        <HeroSection data={sanity.hero} />
         <FloatingBottomNav />
         <SectionSeparator className="mb-14" />
-        <TrustedTeamsSection />
+        <TrustedTeamsSection data={sanity.trustedTeams} />
         <SectionSeparator />
-        <CaseStudiesSection />
+        <CaseStudiesSection caseStudies={sanity.caseStudies} />
         <SectionSeparator />
-        <ProblemSection />
+        <ProblemSection data={sanity.problem} />
         <SectionSeparator />
-        <ServicesSection />
+        <ServicesSection data={sanity.services} />
         <SectionSeparator />
-        <DomainsSection />
+        <DomainsSection data={sanity.domains} />
         <SectionSeparator />
-        <PlansSection />
+        <PlansSection data={sanity.plans} />
         <SectionSeparator />
-        <CredibilitySection />
+        <CredibilitySection data={sanity.credibility} />
         <SectionSeparator />
-        <TestimonialsSection />
-        <FinalCtaSection />
+        <TestimonialsSection data={sanity.testimonials} />
+        <FinalCtaSection data={sanity.finalCta} />
         <SectionSeparator />
-        <StartSmallSection />
-        <FooterSection />
+        <StartSmallSection data={sanity.startSmall} />
+        <FooterSection data={sanity.footer} />
         <FounderFormWidget />
       </main>
     </>

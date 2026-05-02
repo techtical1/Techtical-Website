@@ -8,8 +8,21 @@ import { CapabilityMarquee } from "@/components/pages/home/hero/capability-marqu
 import { FounderTrustBar } from "@/components/pages/home/hero/founder-trust-bar";
 import { HeroBackground } from "@/components/pages/home/hero/hero-background";
 import { heroFade } from "@/components/pages/home/hero/hero-motion";
+import type { SanityHeroData } from "@/lib/sanity.home";
 
-export function HeroSection() {
+type Props = { data?: SanityHeroData };
+
+export function HeroSection({ data }: Props) {
+  const headlineLine1 = data?.headlineLine1 ?? "We Build Products";
+  const headlineBold   = data?.headlineBold   ?? "Founders Can Ship.";
+  const description    = data?.description    ?? "We design apps, websites, and digital products that look right, work right, and help your business grow for founders building something worth using.";
+  const primaryCta     = data?.primaryCtaLabel   ?? "Book A Free Strategy Call";
+  const primaryCtaHref = data?.primaryCtaHref ?? "#contact";
+  const secondaryCta   = data?.secondaryCtaLabel ?? "See Our Work";
+  const secondaryCtaHref = data?.secondaryCtaHref ?? "#work";
+  const note           = data?.handwrittenNote   ?? "Free 30-minute call. No pitch. We'll tell you exactly what your product needs — even if you don't hire us.";
+  const founderTrustText = data?.founderTrustText ?? "Trusted by 120+ founders across 18 countries";
+
   return (
     <section className="relative flex min-h-[100svh] flex-col overflow-x-hidden bg-[#fbfbfa]">
       <HeroBackground />
@@ -27,31 +40,30 @@ export function HeroSection() {
             />
           </motion.div>
 
-          <FounderTrustBar />
+          <FounderTrustBar avatars={data?.founderAvatars} text={founderTrustText} />
 
           <motion.h1
             className="mt-4 max-w-5xl text-center text-[3.25rem] leading-tight font-light text-balance text-[#262626] capitalize sm:text-[4.5rem] lg:text-[5.9375rem] lg:leading-tight"
             {...heroFade(0.22)}
           >
-            We Build Products
-            <span className="block font-bold">Founders Can Ship.</span>
+            {headlineLine1}
+            <span className="block font-bold">{headlineBold}</span>
           </motion.h1>
 
           <motion.p
             className="mt-7 max-w-3xl text-lg leading-8 text-pretty text-[#666666] sm:text-xl"
             {...heroFade(0.32)}
           >
-            We design apps, websites, and digital products that look right, work right, and help
-            your business grow for founders building something worth using.
+            {description}
           </motion.p>
 
           <motion.div
             className="relative mt-10 flex w-full max-w-2xl flex-col items-center justify-center gap-4 sm:flex-row"
             {...heroFade(0.42)}
           >
-            <StrategyCallButton />
-            <StrategyCallButton href="#work" variant="secondary">
-              See Our Work
+            <StrategyCallButton href={primaryCtaHref}>{primaryCta}</StrategyCallButton>
+            <StrategyCallButton href={secondaryCtaHref} variant="secondary">
+              {secondaryCta}
             </StrategyCallButton>
           </motion.div>
 
@@ -59,13 +71,12 @@ export function HeroSection() {
             className="font-hand mt-6 w-full max-w-[37.3125rem] text-center text-[1.0625rem] leading-normal font-normal text-[#656566] sm:text-[1.125rem]"
             {...heroFade(0.52)}
           >
-            Free 30-minute call. No pitch. We&apos;ll tell you exactly what your product needs
-            &mdash; even if you don&apos;t hire us.
+            {note}
           </motion.p>
         </div>
       </div>
 
-      <CapabilityMarquee />
+      <CapabilityMarquee items={data?.marqueeItems} />
     </section>
   );
 }

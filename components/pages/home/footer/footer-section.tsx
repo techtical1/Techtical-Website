@@ -1,9 +1,38 @@
 import Link from "next/link";
-import { footerLinks, socialLinks } from "./footer-data";
+import { footerLinks as localLinks, socialLinks as localSocial } from "./footer-data";
 import { TechticalLogo } from "@/components/brand/techtical-logo";
 import { StrategyCallButton } from "@/components/ui/strategy-call-button";
+import type { SanityFooterData } from "@/lib/sanity.home";
 
-export function FooterSection() {
+type Props = { data?: SanityFooterData };
+
+export function FooterSection({ data }: Props) {
+  const exploreLinks = data?.exploreLinks?.length
+    ? data.exploreLinks
+    : localLinks.explore.map((l) => ({ label: l, href: "#" }));
+
+  const whatWeDoLinks = data?.whatWeDoLinks?.length
+    ? data.whatWeDoLinks
+    : localLinks.whatWeDo.map((l) => ({ label: l, href: "#" }));
+
+  const socialLinks = data?.socialLinks?.length
+    ? data.socialLinks
+    : localSocial.map((s) => ({ label: s.label, href: s.href, text: s.text }));
+
+  const headline = data?.headline ?? "Start With Clarity";
+  const description =
+    data?.description ?? "Have a product idea or something not working? let's figure it out together";
+  const ctaLabel = data?.ctaLabel ?? "Book A Free Call";
+  const ctaHref = data?.ctaHref ?? "#contact";
+  const email = data?.email ?? "hello@techtical.com";
+  const copyright = data?.copyrightText ?? "© 2026 Techtical Solution. All Rights Reserved";
+  const legalLinks = data?.legalLinks?.length
+    ? data.legalLinks
+    : [
+        { label: "Privacy Policy", href: "#" },
+        { label: "Terms Of Service", href: "#" },
+      ];
+
   return (
     <footer className="bg-[#FAFAF8] px-4 pt-10 sm:px-6">
       <div className="mx-auto overflow-hidden rounded-t-[2rem] bg-[linear-gradient(180deg,#005E3C_0%,#008755_100%)] px-8 py-12 text-white sm:px-12 lg:px-20 lg:py-16">
@@ -11,36 +40,28 @@ export function FooterSection() {
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.2fr_0.7fr_0.9fr_0.8fr]">
             <div>
               <TechticalLogo variant="light" type="logo" size="md" priority />
-
-              <h2 className="mt-14 text-[1.5rem] leading-tight font-semibold">
-                Start With Clarity
-              </h2>
-
+              <h2 className="mt-14 text-[1.5rem] leading-tight font-semibold">{headline}</h2>
               <p className="mt-5 max-w-[23rem] text-[1rem] leading-7 text-white/70">
-                Have a product idea or something not working? let&apos;s figure it out together
+                {description}
               </p>
-
               <div className="mt-8">
-                <StrategyCallButton variant="secondary" href="#contact">
-                  Book A Free Call
+                <StrategyCallButton variant="secondary" href={ctaHref}>
+                  {ctaLabel}
                 </StrategyCallButton>
               </div>
             </div>
 
-            <FooterColumn title="Explore" links={footerLinks.explore} />
-
-            <FooterColumn title="What We Do" links={footerLinks.whatWeDo} />
+            <FooterColumn title="Explore" links={exploreLinks} />
+            <FooterColumn title="What We Do" links={whatWeDoLinks} />
 
             <div>
               <h3 className="text-[0.95rem] font-semibold text-white">Connect</h3>
-
               <a
-                href="mailto:hello@techtical.com"
+                href={`mailto:${email}`}
                 className="mt-7 block text-[1rem] text-white/70 transition hover:text-white"
               >
-                hello@techtical.com
+                {email}
               </a>
-
               <div className="mt-6 flex flex-wrap gap-4">
                 {socialLinks.map((item) => (
                   <Link
@@ -59,16 +80,16 @@ export function FooterSection() {
           <div className="my-14 border-t border-dashed border-white/25" />
 
           <div className="flex flex-col gap-5 text-[1rem] text-white sm:flex-row sm:items-center sm:justify-between">
-            <p>© 2026 Techtical Solution. All Rights Reserved</p>
-
+            <p>{copyright}</p>
             <div className="flex gap-2">
-              <Link href="#" className="transition hover:text-white/70">
-                Privacy Policy
-              </Link>
-              <span>•</span>
-              <Link href="#" className="transition hover:text-white/70">
-                Terms Of Service
-              </Link>
+              {legalLinks.map((link, index) => (
+                <span key={link.label} className="flex gap-2">
+                  {index > 0 && <span>•</span>}
+                  <Link href={link.href} className="transition hover:text-white/70">
+                    {link.label}
+                  </Link>
+                </span>
+              ))}
             </div>
           </div>
         </div>
@@ -77,16 +98,15 @@ export function FooterSection() {
   );
 }
 
-function FooterColumn({ title, links }: { title: string; links: string[] }) {
+function FooterColumn({ title, links }: { title: string; links: { label: string; href: string }[] }) {
   return (
     <div>
       <h3 className="text-[0.95rem] font-semibold text-white">{title}</h3>
-
       <ul className="mt-7 space-y-5">
         {links.map((link) => (
-          <li key={link}>
-            <Link href="#" className="text-[1rem] text-white/70 transition hover:text-white">
-              {link}
+          <li key={link.label}>
+            <Link href={link.href} className="text-[1rem] text-white/70 transition hover:text-white">
+              {link.label}
             </Link>
           </li>
         ))}

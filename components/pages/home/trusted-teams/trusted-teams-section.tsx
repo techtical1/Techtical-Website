@@ -1,19 +1,27 @@
 import Image from "next/image";
-import { trustedLogos } from "./trusted-teams-data";
+import { trustedLogos as localLogos } from "./trusted-teams-data";
+import type { SanityTrustedTeamsData } from "@/lib/sanity.home";
 
 const railSegmentWidth = 310;
 const railTailWidth = 200;
 
-export function TrustedTeamsSection() {
+type Props = { data?: SanityTrustedTeamsData };
+
+export function TrustedTeamsSection({ data }: Props) {
+  const heading = data?.heading ?? "Trusted by teams building";
+  const subheading = data?.subheading ?? "serious products";
+  const displayLogos = data?.logos?.length
+    ? data.logos
+    : localLogos.map((l) => ({ name: l.name, src: l.src, width: l.width, height: l.height }));
+
   return (
     <section className="relative overflow-hidden bg-[#FAFAF8] px-6 pt-0 pb-8">
       <div className="mx-auto max-w-6xl text-center">
         <p className="text-[40px] leading-[1.1] font-semibold tracking-[-0.04em] text-[#242424] md:text-[56px]">
-          Trusted by teams building
+          {heading}
         </p>
-
         <p className="mt-2 font-serif text-[34px] leading-none tracking-[-0.03em] text-[#009F72] italic md:text-[48px]">
-          serious products
+          {subheading}
         </p>
       </div>
 
@@ -24,13 +32,13 @@ export function TrustedTeamsSection() {
         <div className="animate-trusted-logo-marquee absolute top-0 left-0 flex w-max">
           {[0, 1].map((segmentIndex) => (
             <div key={segmentIndex} className="relative h-28 w-[90.0625rem] shrink-0">
-              {trustedLogos.map((logo, logoIndex) => (
+              {displayLogos.map((logo, logoIndex) => (
                 <div
                   key={`${logo.name}-${segmentIndex}`}
                   className="absolute top-2 flex h-16 w-[13.4375rem] -translate-x-1/2 items-center justify-center opacity-45 grayscale transition hover:opacity-80"
                   style={{
                     left:
-                      logoIndex === trustedLogos.length - 1
+                      logoIndex === displayLogos.length - 1
                         ? `${logoIndex * railSegmentWidth + railTailWidth / 2}px`
                         : `${logoIndex * railSegmentWidth + 214 / 2}px`,
                   }}
@@ -41,6 +49,7 @@ export function TrustedTeamsSection() {
                     width={logo.width}
                     height={logo.height}
                     className="h-auto max-h-10 w-auto object-contain"
+                    unoptimized={logo.src.includes('cdn.sanity.io')}
                   />
                 </div>
               ))}

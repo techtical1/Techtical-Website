@@ -2,13 +2,29 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { caseStudies } from "./case-studies-data";
+import { caseStudies as localCaseStudies } from "./case-studies-data";
 import { CaseStudySlide } from "./case-study-slide";
+import type { SanityCaseStudyItem } from "@/lib/sanity.home";
+import type { CaseStudy } from "./case-studies-data";
 
-export function CaseStudiesSection() {
+type Props = { caseStudies?: SanityCaseStudyItem[] };
+
+export function CaseStudiesSection({ caseStudies }: Props) {
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
-  const totalSlides = caseStudies.length;
+  // Merge Sanity data into the local CaseStudy shape — components stay unchanged
+  const displayData: CaseStudy[] = caseStudies?.length
+    ? caseStudies.map((cs) => ({
+        eyebrow: cs.eyebrow,
+        title: cs.title,
+        image: cs.image,
+        tags: cs.tags,
+        quote: cs.quote,
+        author: cs.author,
+      }))
+    : localCaseStudies;
+
+  const totalSlides = displayData.length;
   const transitionCount = totalSlides - 1;
 
   const { scrollYProgress } = useScroll({
@@ -24,7 +40,7 @@ export function CaseStudiesSection() {
         <div className="sticky top-16 flex h-[76vh] items-center overflow-hidden">
           <div className="mx-auto h-full w-[94vw] max-w-[1480px] overflow-hidden rounded-[2rem] bg-[#0F0F0F] shadow-[0_30px_90px_rgba(0,0,0,0.18)]">
             <motion.div style={{ x }} className="flex h-full">
-              {caseStudies.map((caseStudy, index) => (
+              {displayData.map((caseStudy, index) => (
                 <CaseStudySlide
                   key={caseStudy.title}
                   caseStudy={caseStudy}
