@@ -8,20 +8,21 @@ import { CapabilityMarquee } from "@/components/pages/home/hero/capability-marqu
 import { FounderTrustBar } from "@/components/pages/home/hero/founder-trust-bar";
 import { HeroBackground } from "@/components/pages/home/hero/hero-background";
 import { heroFade } from "@/components/pages/home/hero/hero-motion";
-import type { SanityHeroData } from "@/lib/sanity.home";
+import { homePageDefaults, type SanityHeroData } from "@/lib/sanity.home";
 
 type Props = { data?: SanityHeroData };
 
 export function HeroSection({ data }: Props) {
-  const headlineLine1 = data?.headlineLine1 ?? "We Build Products";
-  const headlineBold   = data?.headlineBold   ?? "Founders Can Ship.";
-  const description    = data?.description    ?? "We design apps, websites, and digital products that look right, work right, and help your business grow for founders building something worth using.";
-  const primaryCta     = data?.primaryCtaLabel   ?? "Book A Free Strategy Call";
-  const primaryCtaHref = data?.primaryCtaHref ?? "#contact";
-  const secondaryCta   = data?.secondaryCtaLabel ?? "See Our Work";
-  const secondaryCtaHref = data?.secondaryCtaHref ?? "#work";
-  const note           = data?.handwrittenNote   ?? "Free 30-minute call. No pitch. We'll tell you exactly what your product needs — even if you don't hire us.";
-  const founderTrustText = data?.founderTrustText ?? "Trusted by 120+ founders across 18 countries";
+  const defaults = homePageDefaults.hero;
+  const headlineLine1 = data?.headlineLine1 ?? defaults.headlineLine1;
+  const headlineBold = data?.headlineBold ?? defaults.headlineBold;
+  const description = data?.description ?? defaults.description;
+  const primaryCta = data?.primaryCtaLabel ?? defaults.primaryCtaLabel;
+  const primaryCtaHref = data?.primaryCtaHref ?? defaults.primaryCtaHref;
+  const secondaryCta = data?.secondaryCtaLabel ?? defaults.secondaryCtaLabel;
+  const secondaryCtaHref = data?.secondaryCtaHref ?? defaults.secondaryCtaHref;
+  const note = data?.handwrittenNote ?? defaults.handwrittenNote;
+  const founderTrustText = data?.founderTrustText ?? defaults.founderTrustText;
 
   return (
     <section className="relative flex min-h-[100svh] flex-col overflow-x-hidden bg-[#fbfbfa]">

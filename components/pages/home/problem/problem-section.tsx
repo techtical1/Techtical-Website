@@ -1,13 +1,14 @@
 import { ProblemVector } from "./problem-vector";
 import { ProblemRotator } from "./problem-rotator";
-import type { SanityProblemData } from "@/lib/sanity.home";
+import { homePageDefaults, type SanityProblemData } from "@/lib/sanity.home";
 
 type Props = { data?: SanityProblemData };
 
 export function ProblemSection({ data }: Props) {
-  const headingLine1 = data?.headingLine1 ?? "Let's Get Rid Of";
-  const headingHighlight = data?.headingHighlight ?? "things like";
-  const description = data?.description ?? "Because users notice more than they say";
+  const defaults = homePageDefaults.problem;
+  const headingLine1 = data?.headingLine1 ?? defaults.headingLine1;
+  const headingHighlight = data?.headingHighlight ?? defaults.headingHighlight;
+  const description = data?.description ?? defaults.description;
 
   return (
     <section className="bg-[#FAFAF8] px-4 py-16 sm:px-6 lg:py-20">

@@ -2,10 +2,12 @@ import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { RichHeading } from "@/components/common/rich-heading";
 import { TagPill } from "@/components/common/tag-pill";
-import { blogIntroData } from "./blog-intro-data";
+import { blogPageDefaults, type BlogIntroData } from "@/lib/sanity.blog-page";
 
-export function BlogIntroSection() {
-  const { title, paragraphs, tags, image } = blogIntroData;
+type Props = { data?: BlogIntroData };
+
+export function BlogIntroSection({ data }: Props) {
+  const { title, paragraphs, tags, image } = data ?? blogPageDefaults.intro;
 
   return (
     <section className="bg-[#F7F7F2] py-24 md:py-28">

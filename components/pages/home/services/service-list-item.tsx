@@ -1,7 +1,7 @@
-import type { ServiceItem } from "./services-data";
+import type { SanityServiceItem } from "@/lib/sanity.home";
 
 type ServiceListItemProps = {
-  service: ServiceItem;
+  service: SanityServiceItem;
   isActive: boolean;
   onClick: () => void;
 };

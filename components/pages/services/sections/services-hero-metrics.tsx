@@ -1,13 +1,19 @@
-import { servicesHeroData } from "./services-hero-data";
+import { servicesPageDefaults, type ServicesHeroData } from "@/lib/sanity.services";
 
-export function ServicesHeroMetrics() {
+type Props = { data?: ServicesHeroData };
+
+export function ServicesHeroMetrics({ data }: Props) {
+  const hero = data ?? servicesPageDefaults.hero;
+  const metrics = hero.metrics.length ? hero.metrics : servicesPageDefaults.hero.metrics;
+  const [partners, success, projects, delivery] = metrics;
+
   return (
 <div className="pointer-events-none relative hidden h-[620px] w-full max-w-[640px] overflow-hidden lg:block">      
   <div className="absolute inset-0 bg-gradient-to-r from-[#F7F7F5] via-transparent to-[#F7F7F5]" />
 
-      <div className="grid h-full grid-cols-2 grid-rows-3 border-y border-black/[0.06]">
+        <div className="grid h-full grid-cols-2 grid-rows-3 border-y border-black/[0.06]">
         <div className="border-r border-black/[0.06]" />
-        <MetricCell value="120+" label="Long-Term Partners" faded />
+        <MetricCell value={partners?.value ?? "120+"} label={partners?.label ?? "Long-Term Partners"} faded={partners?.faded ?? true} />
 
         <div className="relative border-r border-t border-black/[0.06]">
           <div className="absolute left-8 top-10 rounded-[18px] bg-white px-7 py-6 shadow-[0_28px_90px_rgba(0,0,0,0.08)]">
@@ -26,19 +32,19 @@ export function ServicesHeroMetrics() {
               ★★★★★
             </div>
             <p className="mt-2 text-[18px] font-medium text-[#202126]">
-              Rated 4.5/5
+              {hero.ratingText}
             </p>
           </div>
         </div>
 
         <div className="grid border-t border-black/[0.06]">
-          <MetricCell value="96%" label="Success Rate" />
+          <MetricCell value={success?.value ?? "96%"} label={success?.label ?? "Success Rate"} faded={success?.faded} />
           <div className="border-t border-black/[0.06]" />
-          <MetricCell value="250+" label="Projects Delivered" />
+          <MetricCell value={projects?.value ?? "250+"} label={projects?.label ?? "Projects Delivered"} faded={projects?.faded} />
         </div>
 
         <div className="border-r border-t border-black/[0.06]" />
-        <MetricCell value="98%" label="On-Time Delivery" faded />
+        <MetricCell value={delivery?.value ?? "98%"} label={delivery?.label ?? "On-Time Delivery"} faded={delivery?.faded ?? true} />
       </div>
 
       <div className="absolute inset-0 bg-gradient-to-b from-[#F7F7F5] via-transparent to-[#F7F7F5]" />

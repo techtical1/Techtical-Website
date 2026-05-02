@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
-import { domains as localDomains } from "./domains-data";
+import { homePageDefaults } from "@/lib/sanity.home";
 
 const slots = [
   { position: -5, x: 110, y: 20, rotate: -24, scale: 0.82, opacity: 0.48 },
@@ -20,7 +20,7 @@ const slots = [
 type Props = { domains?: string[] };
 
 export function DomainOrbit({ domains }: Props) {
-  const displayDomains = domains?.length ? domains : localDomains;
+  const displayDomains = domains?.length ? domains : homePageDefaults.domains.items;
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {

@@ -1,13 +1,14 @@
 import { SectionPill } from "@/components/ui/section-pill";
 import { TestimonialCarousel } from "./testimonial-carousel";
-import type { SanityTestimonialsData } from "@/lib/sanity.home";
+import { homePageDefaults, type SanityTestimonialsData } from "@/lib/sanity.home";
 
 type Props = { data?: SanityTestimonialsData };
 
 export function TestimonialsSection({ data }: Props) {
-  const pillLabel = data?.pillLabel ?? "Across Fiverr & Client Projects";
-  const headingPrefix = data?.headingPrefix ?? "From teams who needed";
-  const headingHighlight = data?.headingHighlight ?? "clarity";
+  const defaults = homePageDefaults.testimonials;
+  const pillLabel = data?.pillLabel ?? defaults.pillLabel;
+  const headingPrefix = data?.headingPrefix ?? defaults.headingPrefix;
+  const headingHighlight = data?.headingHighlight ?? defaults.headingHighlight;
 
   return (
     <section className="flex min-h-screen items-center bg-[#FAFAF8] px-4 py-16 sm:px-6 lg:py-20">

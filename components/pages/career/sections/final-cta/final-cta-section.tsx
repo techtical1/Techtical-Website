@@ -1,9 +1,13 @@
 import { SectionPill } from "@/components/ui/section-pill";
 import { RichHeading } from "@/components/common/rich-heading";
 import { StrategyCallButton } from "@/components/ui/strategy-call-button";
-import { finalCtaData } from "./final-cta-data";
+import { careerPageDefaults, type CareerFinalCtaData } from "@/lib/sanity.career";
 
-export function FinalCtaSection() {
+type Props = { data?: CareerFinalCtaData };
+
+export function FinalCtaSection({ data }: Props) {
+  const finalCtaData = data ?? careerPageDefaults.finalCta;
+
   return (
     <section className="relative w-full overflow-hidden bg-white px-4 py-[110px]">
 

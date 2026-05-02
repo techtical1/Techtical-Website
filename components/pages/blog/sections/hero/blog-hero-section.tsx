@@ -7,10 +7,12 @@ import { GradientGlow } from "@/components/common/gradient-glow";
 import { RichHeading } from "@/components/common/rich-heading";
 import { SplitHeroLayout } from "@/components/common/split-hero-layout";
 import { InsightStatCard } from "@/components/common/insight-stat-card";
-import { blogHeroData } from "./blog-hero-data";
+import { blogPageDefaults, type BlogHeroData } from "@/lib/sanity.blog-page";
 
-export function BlogHeroSection() {
-  const { pill, title, description, cta, cards } = blogHeroData;
+type Props = { data?: BlogHeroData };
+
+export function BlogHeroSection({ data }: Props) {
+  const { pill, title, description, cta, cards } = data ?? blogPageDefaults.hero;
 
   return (
     <SplitHeroLayout

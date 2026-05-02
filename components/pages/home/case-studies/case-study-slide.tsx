@@ -3,10 +3,10 @@
 import { useTransform, useMotionValue } from "framer-motion";
 import type { MotionValue } from "framer-motion";
 import { CaseStudyCard } from "./case-study-card";
-import type { CaseStudy } from "./case-studies-data";
+import type { SanityCaseStudyItem } from "@/lib/sanity.home";
 
 type Props = {
-  caseStudy: CaseStudy;
+  caseStudy: SanityCaseStudyItem;
   index: number;
   totalSlides: number;
   scrollYProgress: MotionValue<number>;

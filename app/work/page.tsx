@@ -10,28 +10,37 @@ import { WorkHeroSection } from "@/components/pages/work/sections/hero/work-hero
 import { ProjectGallerySection } from "@/components/pages/work/sections/project-gallery/project-gallery-section";
 import { WorkApproachSection } from "@/components/pages/work/sections/work-approach/work-approach-section";
 import { SectionSeparator } from "@/components/ui/section-separator";
+import { getHomePageData } from "@/lib/sanity.home";
+import { getServicesPageData } from "@/lib/sanity.services";
+import { getWorkPageData } from "@/lib/sanity.work";
 
-export default function WorkPage() {
+export default async function WorkPage() {
+  const [work, home, services] = await Promise.all([
+    getWorkPageData(),
+    getHomePageData(),
+    getServicesPageData(),
+  ]);
+
   return (
     <main>
-      <WorkHeroSection />
+      <WorkHeroSection data={work.hero} />
       <SectionSeparator />
-      <WorkApproachSection />
+      <WorkApproachSection data={work.approach} />
       <SectionSeparator />
-      <ProjectGallerySection />
+      <ProjectGallerySection data={work.gallery} />
       <SectionSeparator />
-      <FeaturedCaseSection />
+      <FeaturedCaseSection data={work.featuredCase} />
       <SectionSeparator />
-      <TestimonialsSection />
+      <TestimonialsSection data={home.testimonials} />
       <SectionSeparator />
-      <ProductClaritySection />
+      <ProductClaritySection data={services.productClarity} />
       <SectionSeparator />
-      <FaqsSection />
+      <FaqsSection data={services.faqs} />
       <SectionSeparator />
-      <ClarityCtaSection />
+      <ClarityCtaSection data={services.clarityCta} />
       <SectionSeparator />
-      <StartSmallSection />
-      <FooterSection />
+      <StartSmallSection data={home.startSmall} />
+      <FooterSection data={home.footer} />
     </main>
   );
 }

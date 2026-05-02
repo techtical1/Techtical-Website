@@ -1,15 +1,15 @@
 import { SectionPill } from "@/components/ui/section-pill";
-import { startSmallCards as localCards } from "./start-small-data";
 import { StartSmallCard } from "./start-small-card";
-import type { SanityStartSmallData } from "@/lib/sanity.home";
+import { homePageDefaults, type SanityStartSmallData } from "@/lib/sanity.home";
 
 type Props = { data?: SanityStartSmallData };
 
 export function StartSmallSection({ data }: Props) {
-  const pillLabel = data?.pillLabel ?? "Where To Begin";
-  const headingPrefix = data?.headingPrefix ?? "Start from a";
-  const headingHighlight = data?.headingHighlight ?? "small task";
-  const displayCards = data?.cards?.length ? data.cards : localCards;
+  const defaults = homePageDefaults.startSmall;
+  const pillLabel = data?.pillLabel ?? defaults.pillLabel;
+  const headingPrefix = data?.headingPrefix ?? defaults.headingPrefix;
+  const headingHighlight = data?.headingHighlight ?? defaults.headingHighlight;
+  const displayCards = data?.cards?.length ? data.cards : defaults.cards;
 
   return (
     <section className="bg-[#FAFAF8] px-4 py-16 sm:px-6 lg:py-20">

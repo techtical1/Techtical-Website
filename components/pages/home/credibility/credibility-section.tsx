@@ -1,35 +1,23 @@
 import Image from "next/image";
-import { credibilityLogos as localLogos, credibilityStats as localStats } from "./credibility-data";
 import { CredibilityCard } from "./credibility-card";
 import { StrategyCallButton } from "@/components/ui/strategy-call-button";
-import type { SanityCredibilityData } from "@/lib/sanity.home";
+import { homePageDefaults, type SanityCredibilityData } from "@/lib/sanity.home";
 
 type Props = { data?: SanityCredibilityData };
 
 export function CredibilitySection({ data }: Props) {
-  const logos = data?.logos?.length
-    ? data.logos
-    : localLogos.map((l) => ({ name: l.name, src: l.src, width: l.width, height: l.height }));
-
-  const stats = data?.stats?.length
-    ? data.stats
-    : localStats.map((s) => ({ id: s.id, value: s.value, label: s.label, description: s.description, icon: s.icon }));
-
-  const projectCount = data?.projectCount ?? "400+";
-  const projectCountLabel = data?.projectCountLabel ?? "Projects Delivered";
-  const projectCountDesc = data?.projectCountDescription ?? "Across industries, solving real product problems.";
-  const heading = data?.heading ?? "From fiverr projects to real";
-  const headingHighlight = data?.headingHighlight ?? "clarity";
-  const subheading =
-    data?.subheading ?? "Real products, real teams — delivering clarity, structure, and results.";
-  const marketplaceLogo = data?.marketplaceLogo ?? {
-    name: "Fiverr",
-    src: "/assets/credibility/fiverr.svg",
-    width: 180,
-    height: 60,
-  };
-  const ctaLabel = data?.ctaLabel ?? "View Fiverr Profile";
-  const ctaHref = data?.ctaHref ?? "#work";
+  const defaults = homePageDefaults.credibility;
+  const logos = data?.logos?.length ? data.logos : defaults.logos;
+  const stats = data?.stats?.length ? data.stats : defaults.stats;
+  const projectCount = data?.projectCount ?? defaults.projectCount;
+  const projectCountLabel = data?.projectCountLabel ?? defaults.projectCountLabel;
+  const projectCountDesc = data?.projectCountDescription ?? defaults.projectCountDescription;
+  const heading = data?.heading ?? defaults.heading;
+  const headingHighlight = data?.headingHighlight ?? defaults.headingHighlight;
+  const subheading = data?.subheading ?? defaults.subheading;
+  const marketplaceLogo = data?.marketplaceLogo ?? defaults.marketplaceLogo;
+  const ctaLabel = data?.ctaLabel ?? defaults.ctaLabel;
+  const ctaHref = data?.ctaHref ?? defaults.ctaHref;
 
   return (
     <section className="flex min-h-screen items-center bg-[#FAFAF8] px-4 py-12 sm:px-6 lg:py-16">

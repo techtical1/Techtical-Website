@@ -1,22 +1,26 @@
 import Image from "next/image";
 import { SectionPill } from "@/components/ui/section-pill";
-import { faqsData } from "./faqs-data";
 import { FaqAccordionItem } from "./faq-accordion-item";
+import { servicesPageDefaults, type ServicesFaqsData } from "@/lib/sanity.services";
 
-export function FaqsSection() {
+type Props = { data?: ServicesFaqsData };
+
+export function FaqsSection({ data }: Props) {
+  const section = data ?? servicesPageDefaults.faqs;
+
   return (
     <section className="bg-[#F7F7F5] px-6 py-24 md:px-10">
       <div className="mx-auto grid max-w-[990px] gap-[130px] lg:grid-cols-[280px_1fr]">
         <div className="relative">
-          <SectionPill className="mb-8" label="FAQs" />
+          <SectionPill className="mb-8" label={section.pill} />
 
 <h2 className="w-[430px] text-[42px] font-semibold leading-[1.12] tracking-[-0.055em] text-[#202126]">
-  {faqsData.title.line1}
+  {section.titleLine1}
   <br />
-  <span className="whitespace-nowrap">{faqsData.title.line2}</span>
+  <span className="whitespace-nowrap">{section.titleLine2}</span>
   <br />
   <span className="font-serif italic font-normal text-[#00895F]">
-    {faqsData.title.highlight}
+    {section.titleHighlight}
   </span>
 </h2>
 
@@ -38,13 +42,13 @@ export function FaqsSection() {
             />
 
             <p className="absolute bottom-[50px] right-[-20px] font-serif text-[20px] italic text-[#00895F]">
-              {faqsData.helperText}
+              {section.helperText}
             </p>
           </div>
         </div>
 
         <div className="grid gap-3">
-          {faqsData.items.map((item) => (
+          {section.items.map((item) => (
             <FaqAccordionItem
               key={item.question}
               question={item.question}

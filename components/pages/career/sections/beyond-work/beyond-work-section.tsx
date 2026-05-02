@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { RichHeading } from "@/components/common/rich-heading";
-import { beyondWorkData } from "./beyond-work-data";
+import { careerPageDefaults, type BeyondWorkData } from "@/lib/sanity.career";
 
 function CultureImageCard({
   src,
@@ -30,8 +30,10 @@ function CultureImageCard({
   );
 }
 
-export function BeyondWorkSection() {
-  const { title, subtitle, description, images } = beyondWorkData;
+type Props = { data?: BeyondWorkData };
+
+export function BeyondWorkSection({ data }: Props) {
+  const { title, subtitle, description, images } = data ?? careerPageDefaults.beyondWork;
 
   return (
     <section className="overflow-hidden bg-[#F7F7F2] py-20 md:py-24">

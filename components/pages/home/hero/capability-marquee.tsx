@@ -1,12 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { capabilityMarqueeItems } from "@/components/pages/home/hero/hero-data";
+import { homePageDefaults } from "@/lib/sanity.home";
 
 type Props = { items?: string[][] };
 
 export function CapabilityMarquee({ items }: Props) {
-  const displayItems = items?.length ? items : [...capabilityMarqueeItems];
+  const displayItems = items?.length ? items : homePageDefaults.hero.marqueeItems;
 
   return (
     <div className="sticky bottom-20 z-20 w-full border-y border-black/10 bg-[#f1f1f1] py-5">

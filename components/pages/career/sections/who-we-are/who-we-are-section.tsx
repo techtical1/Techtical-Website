@@ -1,10 +1,12 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { RichHeading } from "@/components/common/rich-heading";
-import { whoWeAreData } from "./who-we-are-data";
+import { careerPageDefaults, type WhoWeAreData } from "@/lib/sanity.career";
 
-export function WhoWeAreSection() {
-  const { title, description, cards } = whoWeAreData;
+type Props = { data?: WhoWeAreData };
+
+export function WhoWeAreSection({ data }: Props) {
+  const { title, description, cards } = data ?? careerPageDefaults.whoWeAre;
 
   return (
     <section className="bg-[#F7F7F2]">

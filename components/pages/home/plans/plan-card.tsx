@@ -1,10 +1,10 @@
-import type { PlanItem } from "./plans-data";
+import type { SanityPlanItem } from "@/lib/sanity.home";
 import { PlanFeature } from "./plan-feature";
 import { PlanVisual } from "./plan-visual";
 import { StrategyCallButton } from "@/components/ui/strategy-call-button";
 
 type PlanCardProps = {
-  plan: PlanItem;
+  plan: SanityPlanItem;
 };
 
 export function PlanCard({ plan }: PlanCardProps) {

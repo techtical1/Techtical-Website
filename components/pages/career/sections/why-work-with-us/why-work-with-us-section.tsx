@@ -2,10 +2,12 @@ import { Container } from "@/components/ui/container";
 import { SectionPill } from "@/components/ui/section-pill";
 import { RichHeading } from "@/components/common/rich-heading";
 import { BenefitCard } from "@/components/common/benefit-card";
-import { whyWorkWithUsData } from "./why-work-with-us-data";
+import { careerPageDefaults, type WhyWorkWithUsData } from "@/lib/sanity.career";
 
-export function WhyWorkWithUsSection() {
-  const { pill, title, description, benefits } = whyWorkWithUsData;
+type Props = { data?: WhyWorkWithUsData };
+
+export function WhyWorkWithUsSection({ data }: Props) {
+  const { pill, title, description, benefits } = data ?? careerPageDefaults.whyWorkWithUs;
 
   return (
     <section className="bg-[#F7F7F2] py-24 md:py-28">

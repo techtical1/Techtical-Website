@@ -1,17 +1,18 @@
 import { StrategyCallButton } from "@/components/ui/strategy-call-button";
-import type { SanityFinalCtaData } from "@/lib/sanity.home";
+import { homePageDefaults, type SanityFinalCtaData } from "@/lib/sanity.home";
 
 type Props = { data?: SanityFinalCtaData };
 
 export function FinalCtaSection({ data }: Props) {
-  const eyebrow        = data?.eyebrow        ?? "TAKE THE NEXT STEP";
-  const line1          = data?.headlineLine1   ?? "Let's make your";
-  const line2          = data?.headlineLine2   ?? "product the thing";
-  const line3          = data?.headlineLine3   ?? "users";
-  const highlight      = data?.headlineHighlight ?? "don't complain about.";
-  const description    = data?.description    ?? "A 30-minute intro call. No pitch deck, no pressure. We'll listen to where you're stuck, tell you honestly if we can help, and if we can — we'll propose a 3-day trial so you can see the work before you commit.";
-  const ctaLabel       = data?.ctaLabel       ?? "BOOK A INTRO CALL";
-  const ctaHref        = data?.ctaHref        ?? "#contact";
+  const defaults = homePageDefaults.finalCta;
+  const eyebrow = data?.eyebrow ?? defaults.eyebrow;
+  const line1 = data?.headlineLine1 ?? defaults.headlineLine1;
+  const line2 = data?.headlineLine2 ?? defaults.headlineLine2;
+  const line3 = data?.headlineLine3 ?? defaults.headlineLine3;
+  const highlight = data?.headlineHighlight ?? defaults.headlineHighlight;
+  const description = data?.description ?? defaults.description;
+  const ctaLabel = data?.ctaLabel ?? defaults.ctaLabel;
+  const ctaHref = data?.ctaHref ?? defaults.ctaHref;
 
   return (
     <section className="w-full bg-[#FAFAF8] px-4 py-16 sm:px-6 lg:px-10 lg:py-20">

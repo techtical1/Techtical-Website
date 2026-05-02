@@ -1,30 +1,19 @@
 import Image from "next/image";
-import { plans as localPlans } from "./plans-data";
 import { PlanCard } from "./plan-card";
 import { SectionPill } from "@/components/ui/section-pill";
-import type { SanityPlansData } from "@/lib/sanity.home";
-import type { PlanItem } from "./plans-data";
+import { homePageDefaults, type SanityPlanItem, type SanityPlansData } from "@/lib/sanity.home";
 
 type Props = { data?: SanityPlansData };
 
 export function PlansSection({ data }: Props) {
-  const displayPlans: PlanItem[] = data?.plans?.length
-    ? data.plans.map((p) => ({
-        id: p.id,
-        theme: p.theme,
-        title: p.title,
-        features: p.features,
-        ctaLabel: p.ctaLabel,
-        visualType: p.visualType,
-      }))
-    : localPlans;
-  const pillLabel = data?.pillLabel ?? "Selected Work";
-  const headingLine1 = data?.headingLine1 ?? "Designed for";
-  const headingLine2Prefix = data?.headingLine2Prefix ?? "where";
-  const headingHighlight = data?.headingHighlight ?? "you are";
-  const description = data?.description ?? "Two entry points. one outcome - a product that works.";
-  const bottomText =
-    data?.bottomText ?? "From zero to launch in weeks. clean design, solid dev, no confusion.";
+  const defaults = homePageDefaults.plans;
+  const displayPlans: SanityPlanItem[] = data?.plans?.length ? data.plans : defaults.plans;
+  const pillLabel = data?.pillLabel ?? defaults.pillLabel;
+  const headingLine1 = data?.headingLine1 ?? defaults.headingLine1;
+  const headingLine2Prefix = data?.headingLine2Prefix ?? defaults.headingLine2Prefix;
+  const headingHighlight = data?.headingHighlight ?? defaults.headingHighlight;
+  const description = data?.description ?? defaults.description;
+  const bottomText = data?.bottomText ?? defaults.bottomText;
 
   return (
     <section className="bg-[#FAFAF8] px-4 py-16 sm:px-6 lg:py-24">

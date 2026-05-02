@@ -1,6 +1,5 @@
 import Image from "next/image";
-import { trustedLogos as localLogos } from "./trusted-teams-data";
-import type { SanityTrustedTeamsData } from "@/lib/sanity.home";
+import { homePageDefaults, type SanityTrustedTeamsData } from "@/lib/sanity.home";
 
 const railSegmentWidth = 310;
 const railTailWidth = 200;
@@ -8,11 +7,10 @@ const railTailWidth = 200;
 type Props = { data?: SanityTrustedTeamsData };
 
 export function TrustedTeamsSection({ data }: Props) {
-  const heading = data?.heading ?? "Trusted by teams building";
-  const subheading = data?.subheading ?? "serious products";
-  const displayLogos = data?.logos?.length
-    ? data.logos
-    : localLogos.map((l) => ({ name: l.name, src: l.src, width: l.width, height: l.height }));
+  const defaults = homePageDefaults.trustedTeams;
+  const heading = data?.heading ?? defaults.heading;
+  const subheading = data?.subheading ?? defaults.subheading;
+  const displayLogos = data?.logos?.length ? data.logos : defaults.logos;
 
   return (
     <section className="relative overflow-hidden bg-[#FAFAF8] px-6 pt-0 pb-8">

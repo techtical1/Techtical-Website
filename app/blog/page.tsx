@@ -6,23 +6,30 @@ import { BlogHeroSection } from "@/components/pages/blog/sections/hero/blog-hero
 import { LatestInsightsSection } from "@/components/pages/blog/sections/latest-insights/latest-insights-section";
 import { FooterSection } from "@/components/pages/home/footer/footer-section";
 import { SectionSeparator } from "@/components/ui/section-separator";
+import { getBlogPageData } from "@/lib/sanity.blog-page";
+import { getHomePageData } from "@/lib/sanity.home";
 
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const [blog, home] = await Promise.all([
+    getBlogPageData(),
+    getHomePageData(),
+  ]);
+
   return (
     <main>
-        <BlogHeroSection />
+        <BlogHeroSection data={blog.hero} />
         <SectionSeparator/>
-        <FeaturedArticleSection />
+        <FeaturedArticleSection data={blog.featuredArticle} />
         <SectionSeparator/>
-        <ChallengeExplorerSection />
+        <ChallengeExplorerSection data={blog.challengeExplorer} />
         <SectionSeparator/>
         <LatestInsightsSection />
         <SectionSeparator/>
-        <BlogIntroSection />
-        < SectionSeparator />
-        <BlogCtaSection />;
-        <FooterSection />
+        <BlogIntroSection data={blog.intro} />
+        <SectionSeparator />
+        <BlogCtaSection data={blog.cta} />
+        <FooterSection data={home.footer} />
     </main>
   );
 }

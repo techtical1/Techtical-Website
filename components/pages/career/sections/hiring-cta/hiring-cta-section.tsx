@@ -1,11 +1,13 @@
     import Image from "next/image";
-    import { hiringCtaData } from "./hiring-cta-data";
+    import { careerPageDefaults, type HiringCtaData } from "@/lib/sanity.career";
     import { HiringCtaNote } from "./hiring-cta-note";
     import { StrategyCallButton } from "@/components/ui/strategy-call-button";
     import { SectionPill } from "@/components/ui/section-pill";
 
-    export function HiringCtaSection() {
-    const { badge, title, description, button, note, assets } = hiringCtaData;
+    type Props = { data?: HiringCtaData };
+
+    export function HiringCtaSection({ data }: Props) {
+    const { badge, title, description, button, note, assets } = data ?? careerPageDefaults.hiringCta;
 
     return (
   <section className="w-full px-4 py-20">

@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import type { MotionValue } from "framer-motion";
-import type { CaseStudy } from "./case-studies-data";
+import type { SanityCaseStudyItem } from "@/lib/sanity.home";
 
 type CaseStudyCardProps = {
-  caseStudy: CaseStudy;
+  caseStudy: SanityCaseStudyItem;
   scale: MotionValue<number>;
   opacity: MotionValue<number> | number;
 };

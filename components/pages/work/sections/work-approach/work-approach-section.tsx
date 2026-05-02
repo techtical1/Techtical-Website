@@ -5,10 +5,12 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { SectionPill } from "@/components/ui/section-pill";
-import { workApproachData } from "./work-approach-data";
+import { workPageDefaults, type WorkApproachData } from "@/lib/sanity.work";
 
-export function WorkApproachSection() {
-  const { pill, title, paragraphs, footerNote, logo } = workApproachData;
+type Props = { data?: WorkApproachData };
+
+export function WorkApproachSection({ data }: Props) {
+  const { pill, title, paragraphs, footerNote, logo } = data ?? workPageDefaults.approach;
 
   return (
     <section className="relative overflow-hidden bg-white py-28">

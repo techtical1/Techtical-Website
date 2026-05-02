@@ -2,10 +2,12 @@ import { Container } from "@/components/ui/container";
 import { SectionPill } from "@/components/ui/section-pill";
 import { StrategyCallButton } from "@/components/ui/strategy-call-button";
 import { RichHeading } from "@/components/common/rich-heading";
-import { blogCtaData } from "./blog-cta-data";
+import { blogPageDefaults, type BlogCtaData } from "@/lib/sanity.blog-page";
 
-export function BlogCtaSection() {
-  const { pill, title, description, cta } = blogCtaData;
+type Props = { data?: BlogCtaData };
+
+export function BlogCtaSection({ data }: Props) {
+  const { pill, title, description, cta } = data ?? blogPageDefaults.cta;
 
   return (
     <section className="relative overflow-hidden bg-[#F7F7F2] py-28 md:py-36">

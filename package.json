@@ -12,6 +12,9 @@
     "postbuild": "next-sitemap",
     "content:build": "velite",
     "content:dev": "velite --watch",
+    "sanity:seed-home": "node scripts/seed-home-sanity.mjs",
+    "sanity:seed-services": "node scripts/seed-services-sanity.mjs",
+    "sanity:seed-remaining": "node scripts/seed-remaining-pages-sanity.mjs",
     "format": "prettier --write ."
   },
   "dependencies": {

@@ -4,10 +4,12 @@ import { SectionPill } from "@/components/ui/section-pill";
 import { StrategyCallButton } from "@/components/ui/strategy-call-button";
 import { TechticalLogo } from "@/components/brand/techtical-logo";
 import { RichHeading } from "@/components/common/rich-heading";
-import { missionData } from "./mission-data";
+import { careerPageDefaults, type MissionData } from "@/lib/sanity.career";
 
-export function MissionSection() {
-  const { pill, title, subtitle, card, decor } = missionData;
+type Props = { data?: MissionData };
+
+export function MissionSection({ data }: Props) {
+  const { pill, title, subtitle, card, decor } = data ?? careerPageDefaults.mission;
 
   return (
     <section className="relative overflow-hidden bg-[#F7F7F2] py-24 md:py-28">

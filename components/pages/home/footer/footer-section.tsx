@@ -1,37 +1,22 @@
 import Link from "next/link";
-import { footerLinks as localLinks, socialLinks as localSocial } from "./footer-data";
 import { TechticalLogo } from "@/components/brand/techtical-logo";
 import { StrategyCallButton } from "@/components/ui/strategy-call-button";
-import type { SanityFooterData } from "@/lib/sanity.home";
+import { homePageDefaults, type SanityFooterData } from "@/lib/sanity.home";
 
 type Props = { data?: SanityFooterData };
 
 export function FooterSection({ data }: Props) {
-  const exploreLinks = data?.exploreLinks?.length
-    ? data.exploreLinks
-    : localLinks.explore.map((l) => ({ label: l, href: "#" }));
-
-  const whatWeDoLinks = data?.whatWeDoLinks?.length
-    ? data.whatWeDoLinks
-    : localLinks.whatWeDo.map((l) => ({ label: l, href: "#" }));
-
-  const socialLinks = data?.socialLinks?.length
-    ? data.socialLinks
-    : localSocial.map((s) => ({ label: s.label, href: s.href, text: s.text }));
-
-  const headline = data?.headline ?? "Start With Clarity";
-  const description =
-    data?.description ?? "Have a product idea or something not working? let's figure it out together";
-  const ctaLabel = data?.ctaLabel ?? "Book A Free Call";
-  const ctaHref = data?.ctaHref ?? "#contact";
-  const email = data?.email ?? "hello@techtical.com";
-  const copyright = data?.copyrightText ?? "© 2026 Techtical Solution. All Rights Reserved";
-  const legalLinks = data?.legalLinks?.length
-    ? data.legalLinks
-    : [
-        { label: "Privacy Policy", href: "#" },
-        { label: "Terms Of Service", href: "#" },
-      ];
+  const defaults = homePageDefaults.footer;
+  const exploreLinks = data?.exploreLinks?.length ? data.exploreLinks : defaults.exploreLinks;
+  const whatWeDoLinks = data?.whatWeDoLinks?.length ? data.whatWeDoLinks : defaults.whatWeDoLinks;
+  const socialLinks = data?.socialLinks?.length ? data.socialLinks : defaults.socialLinks;
+  const headline = data?.headline ?? defaults.headline;
+  const description = data?.description ?? defaults.description;
+  const ctaLabel = data?.ctaLabel ?? defaults.ctaLabel;
+  const ctaHref = data?.ctaHref ?? defaults.ctaHref;
+  const email = data?.email ?? defaults.email;
+  const copyright = data?.copyrightText ?? defaults.copyrightText;
+  const legalLinks = data?.legalLinks?.length ? data.legalLinks : defaults.legalLinks;
 
   return (
     <footer className="bg-[#FAFAF8] px-4 pt-10 sm:px-6">

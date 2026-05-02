@@ -5,10 +5,12 @@ import { SectionPill } from "@/components/ui/section-pill";
 import { RichHeading } from "@/components/common/rich-heading";
 import { SplitFeatureCard } from "@/components/common/split-feature-card";
 import { TagPill } from "@/components/common/tag-pill";
-import { featuredArticleData } from "./featured-article-data";
+import { blogPageDefaults, type FeaturedArticleData } from "@/lib/sanity.blog-page";
 
-export function FeaturedArticleSection() {
-  const { leftCard, article } = featuredArticleData;
+type Props = { data?: FeaturedArticleData };
+
+export function FeaturedArticleSection({ data }: Props) {
+  const { leftCard, article } = data ?? blogPageDefaults.featuredArticle;
 
   return (
     <section className="relative bg-[#F7F7F2] py-24 md:py-28">

@@ -12,36 +12,47 @@ import { WhyWorkWithUsSection } from "@/components/pages/career/sections/why-wor
 import { FooterSection } from "@/components/pages/home/footer/footer-section";
 import { FaqsSection } from "@/components/pages/services/sections/faqs/faqs-section";
 import { SectionSeparator } from "@/components/ui/section-separator";
+import { getBlogPageData } from "@/lib/sanity.blog-page";
+import { getCareerPageData } from "@/lib/sanity.career";
+import { getHomePageData } from "@/lib/sanity.home";
+import { getServicesPageData } from "@/lib/sanity.services";
 
 
 
-export default function CareerPage() {
+export default async function CareerPage() {
+  const [career, blog, home, services] = await Promise.all([
+    getCareerPageData(),
+    getBlogPageData(),
+    getHomePageData(),
+    getServicesPageData(),
+  ]);
+
   return (
     <main>
-       <CareerHeroSection />
+       <CareerHeroSection data={career.hero} />
        <SectionSeparator/> 
-        <WhoWeAreSection />
+        <WhoWeAreSection data={career.whoWeAre} />
         <SectionSeparator/>
-        <WhyWorkWithUsSection />
+        <WhyWorkWithUsSection data={career.whyWorkWithUs} />
         <SectionSeparator/>
-        <TeamSection />
+        <TeamSection data={career.team} />
         <SectionSeparator/>
-        <BeyondWorkSection />
+        <BeyondWorkSection data={career.beyondWork} />
         <SectionSeparator/>
-        <AiProcessSection />
+        <AiProcessSection data={career.aiProcess} />
         <SectionSeparator/>
-        <MissionSection />
+        <MissionSection data={career.mission} />
         <SectionSeparator/>
-        <HiringCtaSection />
+        <HiringCtaSection data={career.hiringCta} />
         <SectionSeparator/> 
-        <OpenPositionsSection />
+        <OpenPositionsSection data={career.openPositions} />
         <SectionSeparator/> 
-        <BlogIntroSection />
+        <BlogIntroSection data={blog.intro} />
         <SectionSeparator/> 
-        <FaqsSection />
+        <FaqsSection data={services.faqs} />
         <SectionSeparator/>
-        <FinalCtaSection />
-        <FooterSection />
+        <FinalCtaSection data={career.finalCta} />
+        <FooterSection data={home.footer} />
     </main>
   );
 }

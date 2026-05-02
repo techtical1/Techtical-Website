@@ -2,10 +2,8 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
-import { testimonials as localTestimonials } from "./testimonials-data";
 import { TestimonialCard } from "./testimonial-card";
-import type { SanityTestimonialItem } from "@/lib/sanity.home";
-import type { TestimonialItem } from "./testimonials-data";
+import { homePageDefaults, type SanityTestimonialItem } from "@/lib/sanity.home";
 
 function getLoopIndex(index: number, total: number) {
   return (index + total) % total;
@@ -14,18 +12,7 @@ function getLoopIndex(index: number, total: number) {
 type Props = { testimonials?: SanityTestimonialItem[] };
 
 export function TestimonialCarousel({ testimonials }: Props) {
-  // Merge into the local TestimonialItem shape
-  const displayItems: TestimonialItem[] = testimonials?.length
-    ? testimonials.map((t) => ({
-        id: t.id,
-        name: t.name,
-        role: t.role,
-        thumbnail: t.thumbnail,
-        avatar: t.avatar,
-        rating: t.rating,
-        href: t.href,
-      }))
-    : localTestimonials;
+  const displayItems = testimonials?.length ? testimonials : homePageDefaults.testimonials.testimonials;
 
   const [activeIndex, setActiveIndex] = useState(0);
 

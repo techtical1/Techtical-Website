@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import type { ServiceItem } from "./services-data";
+import type { SanityServiceItem } from "@/lib/sanity.home";
 
 type ServiceVisualProps = {
-  activeService: ServiceItem;
+  activeService: SanityServiceItem;
 };
 
 export function ServiceVisual({ activeService }: ServiceVisualProps) {

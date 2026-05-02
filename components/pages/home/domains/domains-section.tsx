@@ -1,19 +1,18 @@
 import { SectionPill } from "@/components/ui/section-pill";
 import { DomainOrbit } from "./domain-orbit";
 import { StrategyCallButton } from "@/components/ui/strategy-call-button";
-import type { SanityDomainsData } from "@/lib/sanity.home";
+import { homePageDefaults, type SanityDomainsData } from "@/lib/sanity.home";
 
 type Props = { data?: SanityDomainsData };
 
 export function DomainsSection({ data }: Props) {
-  const pillLabel = data?.pillLabel ?? "Industries";
-  const headingLine1 = data?.headingLine1 ?? "We've Worked In Your";
-  const headingHighlight = data?.headingHighlight ?? "Domain Before";
-  const description =
-    data?.description ??
-    "we've built and improved products across multiple industries - chances are we already understand how your space works.";
-  const ctaLabel = data?.ctaLabel ?? "Explore Our Work";
-  const ctaHref = data?.ctaHref ?? "#work";
+  const defaults = homePageDefaults.domains;
+  const pillLabel = data?.pillLabel ?? defaults.pillLabel;
+  const headingLine1 = data?.headingLine1 ?? defaults.headingLine1;
+  const headingHighlight = data?.headingHighlight ?? defaults.headingHighlight;
+  const description = data?.description ?? defaults.description;
+  const ctaLabel = data?.ctaLabel ?? defaults.ctaLabel;
+  const ctaHref = data?.ctaHref ?? defaults.ctaHref;
 
   return (
     <section className="bg-[#FAFAF8] px-4 py-16 sm:px-6 lg:py-20">

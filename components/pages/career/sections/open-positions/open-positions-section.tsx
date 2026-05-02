@@ -1,10 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { openPositionsData } from "./open-positions-data";
+import { careerPageDefaults, type OpenPositionsData } from "@/lib/sanity.career";
 import { PositionCard } from "./position-card";
 
-export function OpenPositionsSection() {
+type Props = { data?: OpenPositionsData };
+
+export function OpenPositionsSection({ data }: Props) {
+  const openPositionsData = data ?? careerPageDefaults.openPositions;
   const [openIndex, setOpenIndex] = useState(0);
 
   return (

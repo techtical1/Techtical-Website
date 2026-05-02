@@ -1,34 +1,21 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { services as localServices } from "./services-data";
 import { ServiceListItem } from "./service-list-item";
 import { ServiceVisual } from "./service-visual";
 import { StrategyCallButton } from "@/components/ui/strategy-call-button";
-import type { SanityServicesData } from "@/lib/sanity.home";
-import type { ServiceItem } from "./services-data";
+import { homePageDefaults, type SanityServiceItem, type SanityServicesData } from "@/lib/sanity.home";
 
 type Props = { data?: SanityServicesData };
 
 export function ServicesSection({ data }: Props) {
-  // Merge Sanity data into the ServiceItem shape the sub-components expect
-  const displayServices: ServiceItem[] = data?.services?.length
-    ? data.services.map((s) => ({
-        id: s.id,
-        index: s.index,
-        title: s.title,
-        description: s.description,
-        image: s.image,
-        imageAlt: s.imageAlt,
-      }))
-    : localServices;
-  const headingLine1 = data?.headingLine1 ?? "One partner everything";
-  const headingHighlight = data?.headingHighlight ?? "your product needs";
-  const description =
-    data?.description ??
-    "Whether you're pre-launch or post-funding, we have a structured engagement for exactly where you are.";
-  const ctaLabel = data?.ctaLabel ?? "Book A Free Strategy Call";
-  const ctaNote = data?.ctaNote ?? "Book a free call - we'll tell you in 30 minutes.";
+  const defaults = homePageDefaults.services;
+  const displayServices: SanityServiceItem[] = data?.services?.length ? data.services : defaults.services;
+  const headingLine1 = data?.headingLine1 ?? defaults.headingLine1;
+  const headingHighlight = data?.headingHighlight ?? defaults.headingHighlight;
+  const description = data?.description ?? defaults.description;
+  const ctaLabel = data?.ctaLabel ?? defaults.ctaLabel;
+  const ctaNote = data?.ctaNote ?? defaults.ctaNote;
 
   const [activeIndex, setActiveIndex] = useState(0);
 

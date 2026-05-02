@@ -2,27 +2,15 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { caseStudies as localCaseStudies } from "./case-studies-data";
 import { CaseStudySlide } from "./case-study-slide";
-import type { SanityCaseStudyItem } from "@/lib/sanity.home";
-import type { CaseStudy } from "./case-studies-data";
+import { homePageDefaults, type SanityCaseStudyItem } from "@/lib/sanity.home";
 
 type Props = { caseStudies?: SanityCaseStudyItem[] };
 
 export function CaseStudiesSection({ caseStudies }: Props) {
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
-  // Merge Sanity data into the local CaseStudy shape — components stay unchanged
-  const displayData: CaseStudy[] = caseStudies?.length
-    ? caseStudies.map((cs) => ({
-        eyebrow: cs.eyebrow,
-        title: cs.title,
-        image: cs.image,
-        tags: cs.tags,
-        quote: cs.quote,
-        author: cs.author,
-      }))
-    : localCaseStudies;
+  const displayData = caseStudies?.length ? caseStudies : homePageDefaults.caseStudies;
 
   const totalSlides = displayData.length;
   const transitionCount = totalSlides - 1;

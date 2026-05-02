@@ -2,10 +2,12 @@ import { Container } from "@/components/ui/container";
 import { SectionPill } from "@/components/ui/section-pill";
 import { RichHeading } from "@/components/common/rich-heading";
 import { TeamMemberCard } from "@/components/common/team-member-card";
-import { teamSectionData } from "./team-section-data";
+import { careerPageDefaults, type CareerTeamData } from "@/lib/sanity.career";
 
-export function TeamSection() {
-  const { pill, title, description, members } = teamSectionData;
+type Props = { data?: CareerTeamData };
+
+export function TeamSection({ data }: Props) {
+  const { pill, title, description, members } = data ?? careerPageDefaults.team;
 
   const loopMembers = [...members, ...members];
 

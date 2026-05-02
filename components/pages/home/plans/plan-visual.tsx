@@ -1,8 +1,8 @@
 import Image from "next/image";
-import type { PlanItem } from "./plans-data";
+import type { SanityPlanItem } from "@/lib/sanity.home";
 
 type PlanVisualProps = {
-  plan: PlanItem;
+  plan: SanityPlanItem;
 };
 
 export function PlanVisual({ plan }: PlanVisualProps) {

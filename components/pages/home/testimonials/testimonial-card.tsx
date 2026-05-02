@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
-import type { TestimonialItem } from "./testimonials-data";
+import type { SanityTestimonialItem } from "@/lib/sanity.home";
 
 type TestimonialCardProps = {
-  item: TestimonialItem;
+  item: SanityTestimonialItem;
   position: "left" | "center" | "right";
 };
 

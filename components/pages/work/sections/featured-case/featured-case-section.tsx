@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/container";
 import { SectionPill } from "@/components/ui/section-pill";
-import { featuredCaseData } from "./featured-case-data";
+import { workPageDefaults, type FeaturedCaseData } from "@/lib/sanity.work";
 
 function MetricCard({
   value,
@@ -43,8 +43,10 @@ function MetricCard({
   );
 }
 
-export function FeaturedCaseSection() {
-  const { pill, title, labels, visuals, metrics } = featuredCaseData;
+type Props = { data?: FeaturedCaseData };
+
+export function FeaturedCaseSection({ data }: Props) {
+  const { pill, title, labels, visuals, metrics } = data ?? workPageDefaults.featuredCase;
 
   return (
     <section className="bg-white py-24 md:py-28">

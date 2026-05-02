@@ -3,10 +3,12 @@
 import { Container } from "@/components/ui/container";
 import { RichHeading } from "@/components/common/rich-heading";
 import { ChallengeLinkCard } from "@/components/common/challenge-link-card";
-import { challengeExplorerData } from "./challenge-explorer-data";
+import { blogPageDefaults, type ChallengeExplorerData } from "@/lib/sanity.blog-page";
 
-export function ChallengeExplorerSection() {
-  const { title, description, challenges } = challengeExplorerData;
+type Props = { data?: ChallengeExplorerData };
+
+export function ChallengeExplorerSection({ data }: Props) {
+  const { title, description, challenges } = data ?? blogPageDefaults.challengeExplorer;
 
   return (
     <section className="bg-[#F3F4F6] py-24 md:py-28">

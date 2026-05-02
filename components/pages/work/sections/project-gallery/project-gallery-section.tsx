@@ -7,14 +7,13 @@ import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { SectionPill } from "@/components/ui/section-pill";
 import {
-  projectCategories,
-  projectGalleryData,
-  projects,
+  workPageDefaults,
   type ProjectCategory,
+  type ProjectGalleryData,
   type ProjectItem,
-} from "./project-gallery-data";
+} from "@/lib/sanity.work";
 
-function getCategoryCount(category: ProjectCategory) {
+function getCategoryCount(category: ProjectCategory, projects: ProjectItem[]) {
   if (category === "all") return projects.length;
   return projects.filter((project) => project.category === category).length;
 }
@@ -58,14 +57,16 @@ function ProjectCard({ project }: { project: ProjectItem }) {
   );
 }
 
-export function ProjectGallerySection() {
+type Props = { data?: ProjectGalleryData };
+
+export function ProjectGallerySection({ data }: Props) {
+  const { pill, title, description, categories, projects } = data ?? workPageDefaults.gallery;
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>("all");
-  const { pill, title, description } = projectGalleryData;
 
   const filteredProjects = useMemo(() => {
     if (activeCategory === "all") return projects;
     return projects.filter((project) => project.category === activeCategory);
-  }, [activeCategory]);
+  }, [activeCategory, projects]);
 
   return (
     <section className="relative overflow-hidden bg-white py-24 md:py-28">
@@ -83,7 +84,7 @@ export function ProjectGallerySection() {
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-          {projectCategories.map((category) => {
+          {categories.map((category) => {
             const isActive = activeCategory === category.id;
 
             return (
@@ -98,7 +99,7 @@ export function ProjectGallerySection() {
                     : "border-black/10 bg-white text-[#5A5A5A] hover:border-[#00895F]/40 hover:text-[#00895F]",
                 ].join(" ")}
               >
-                {category.label} ({getCategoryCount(category.id)}) +
+                {category.label} ({getCategoryCount(category.id, projects)}) +
               </button>
             );
           })}

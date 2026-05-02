@@ -2,14 +2,14 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
-import { problemItems as localItems } from "./problem-data";
+import { homePageDefaults } from "@/lib/sanity.home";
 
 const ITEM_HEIGHT = 112;
 
 type Props = { items?: string[] };
 
 export function ProblemRotator({ items }: Props) {
-  const displayItems = items?.length ? items : localItems;
+  const displayItems = items?.length ? items : homePageDefaults.problem.items;
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {

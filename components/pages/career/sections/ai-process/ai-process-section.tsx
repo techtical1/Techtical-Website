@@ -1,10 +1,12 @@
 import { Container } from "@/components/ui/container";
 import { RichHeading } from "@/components/common/rich-heading";
-import { aiProcessData } from "./ai-process-data";
+import { careerPageDefaults, type AiProcessData } from "@/lib/sanity.career";
 import { VideoPlayer } from "@/components/ui/video-player/video-player";
 
-export function AiProcessSection() {
-  const { title, subtitle, video } = aiProcessData;
+type Props = { data?: AiProcessData };
+
+export function AiProcessSection({ data }: Props) {
+  const { title, subtitle, video } = data ?? careerPageDefaults.aiProcess;
 
   return (
     <section className="bg-[#F7F7F2] py-24 md:py-28">
@@ -25,8 +27,8 @@ export function AiProcessSection() {
 
           <div className="mt-14 overflow-hidden rounded-[32px] bg-[#EDEDEA]">
            <VideoPlayer
-                src="/assets/founder/founder-video-preview.mp4"
-                poster="/assets/founder/thumbnail.png"
+                src={video.src}
+                poster={video.poster}
                 autoPlay
                 muted
                 loop

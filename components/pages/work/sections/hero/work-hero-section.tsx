@@ -5,11 +5,13 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/container";
-import { workHeroData } from "./work-hero-data";
 import { StrategyCallButton } from "@/components/ui/strategy-call-button";
+import { workPageDefaults, type WorkHeroData } from "@/lib/sanity.work";
 
-export function WorkHeroSection() {
-  const { pill, title, description, cta, year, visuals } = workHeroData;
+type Props = { data?: WorkHeroData };
+
+export function WorkHeroSection({ data }: Props) {
+  const { title, description, cta, year, visuals } = data ?? workPageDefaults.hero;
 
   return (
     <section className="relative overflow-hidden bg-[#F7F7F2] py-24">

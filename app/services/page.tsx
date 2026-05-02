@@ -1,3 +1,5 @@
+import { getHomePageData } from "@/lib/sanity.home";
+import { getServicesPageData } from "@/lib/sanity.services";
 import { ClarityCtaSection } from "@/components/pages/services/sections/clarity-cta/clarity-cta-section";
 import { FaqsSection } from "@/components/pages/services/sections/faqs/faqs-section";
 import { ServicesMetricsSection } from "@/components/pages/services/sections/metrics/metric-section";
@@ -11,31 +13,35 @@ import { StartSmallSection } from "@/components/pages/home/start-small/start-sma
 import { TrustedTeamsSection } from "@/components/pages/home/trusted-teams/trusted-teams-section";
 import { SectionSeparator } from "@/components/ui/section-separator";
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const [services, home] = await Promise.all([
+    getServicesPageData(),
+    getHomePageData(),
+  ]);
+
   return (
     <main>
-      <ServicesHeroSection />
+      <ServicesHeroSection data={services.hero} />
       <SectionSeparator/>
-      <TrustedTeamsSection/>
-      <ServicesMetricsSection />
+      <TrustedTeamsSection data={home.trustedTeams} />
+      <ServicesMetricsSection data={services.metrics} />
       <SectionSeparator/>
-      <ProblemSection />
+      <ProblemSection data={home.problem} />
       <SectionSeparator/>
-      <ProductClaritySection />
+      <ProductClaritySection data={services.productClarity} />
       <SectionSeparator/> 
-      <ProductClaritySection /> 
+      <ProductClaritySection data={services.productClarity} /> 
       <SectionSeparator/>
-      <ProcessSection />
+      <ProcessSection data={services.process} />
       <SectionSeparator/>
-      <PlansSection />
+      <PlansSection data={home.plans} />
       <SectionSeparator/>
-      <ClarityCtaSection />
+      <ClarityCtaSection data={services.clarityCta} />
       <SectionSeparator/>
-      <FaqsSection />
+      <FaqsSection data={services.faqs} />
       <SectionSeparator />
-      <StartSmallSection />
-      <FooterSection />
+      <StartSmallSection data={home.startSmall} />
+      <FooterSection data={home.footer} />
     </main>
   );
 }
-  
